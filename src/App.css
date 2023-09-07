@@ -1,0 +1,128 @@
+.ACSWApp {
+  text-align: center;
+  background-color: white;
+  display: flex;
+  /* position: absolute; */
+  flex-direction: column;
+  align-items: center;
+  width: 99.8%;
+  height: 99%;
+  border: 1px solid lightgray;
+  overflow-y: scroll;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-float infinite 3s ease-in-out;
+  }
+}
+
+.ACSWApp-stateChange {
+  grid-column-start: 2;
+  border-left: solid 1px #f2f2f2;
+}
+
+.ACSWApp-admin {
+  grid-column-start: 1;
+  border-right: solid 1px #f2f2f2;
+}
+
+.ACSWApp-body {
+  display: block;
+  /* min-height: 100vh; */
+  /* display: flow-root; */
+  height: 100%;
+  width: 100%;
+  /* justify-content: center; */
+}
+
+.ACSWApp-header {
+  background-color: transparent;
+  width: 100%;
+  height: 5.3%;
+  min-height: 47px;
+  max-height: 49px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.App-link {
+  color: rgb(112, 76, 182);
+}
+
+.konvajs-content {
+  cursor: grab;
+  z-index: 5;
+  width: 100% !important;
+  height: 100% !important;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.infinite-scroll-component__outerdiv {
+  width: 100%;
+}
+
+#screenReceiveFrame {
+  margin: 0 auto;
+}
+
+#screenReceiveFrame canvas {
+  width: auto !important;
+  max-width: 100% !important;
+  height: 100% !important;
+  margin: auto !important;
+  left: auto !important;
+}
+
+canvas {
+  display: inline-block;
+  vertical-align: middle;
+  /* position: relative; */
+  padding-block: 1.5% !important;
+}
+
+.spw-login-form label {
+  text-align: start;
+}
+
+.spw-join-space-form label {
+  text-align: start;
+}
+
+#notReadyMenu {
+  width: 100%;
+}
+#q-list {
+  width: 100%;
+}
+
+#q-list .neo-group-list__actions--left {
+  width: 100%;
+}
+
+#select-q {
+  margin: 0;
+}
+
+#wiloader .neo-spinner::after {
+  font-size: 100px;
+}
+
+#main-tabs {
+  display: flex;
+  justify-content: space-between;
+}
+
+@keyframes App-logo-float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}

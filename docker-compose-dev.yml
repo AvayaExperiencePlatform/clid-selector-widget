@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  sample-widget:
+    image: nginx:1.19.2-alpine
+    ports: 
+      - "8443:8443"
+    volumes:
+      - type: bind
+        source: ./secrets/cert.pem
+        target: /etc/nginx/cert.pem
+      - type: bind
+        source: ./secrets/key.pem
+        target: /etc/nginx/key.pem
+      - type: bind
+        source: ./build
+        target: /build
+      - type: bind
+        source: ./server.conf
+        target: /etc/nginx/conf.d/server.conf
+    restart: unless-stopped

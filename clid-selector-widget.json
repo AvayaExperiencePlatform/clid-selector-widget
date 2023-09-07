@@ -1,0 +1,23 @@
+{
+    "metadata": {
+        "name": "CLID Selector Widget",
+        "description": "CLID Selector Widget",
+        "tags": "agent, selector, clid, change",
+        "library": "CLID Selector Widget Widget",
+        "version": "1.0.0",
+        "date": "2022-12-29T10:44:05.741Z",
+        "id": "704c2acf-de7b-4df2-8177-64a8252007fd"
+    },
+    "configuration": {
+        "external": true,
+        "timeout": 5000,
+        "serie": true,
+        "name": "704c2acf-de7b-4df2-8177-64a8252007fd",
+        "element": "<clid-selector></clid-selector>",
+        "icon": "aoc-home",
+        "files": [
+            "bundle.js"
+        ],
+        "overrideUrl":"https://localhost:8443/"
+    }
+  }
