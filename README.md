@@ -11,7 +11,7 @@ This custom widget gives Agents/Supervisors the functionality to:
 
 ## Technical Details
 
-The widget uses mainly the `AXP Public Admin APIs`, while also using the `Workspaces Widget Framework SDK`.
+The widget uses mainly the `AXP Admin - Voice APIs`, while also utilizing the `Workspaces Widget Framework SDK`.
 
 Below are the APIs utilized.
 
@@ -24,14 +24,15 @@ Below are the APIs utilized.
 
 ### Admin APIs
 
-- [```Authorization```](https://developers.avayacloud.com/onecloud-ccaas/docs/how-to-authenticate-with-ccaas-apis#client-credentials-grant) - to acquire the access token to be used across all the API calls.
-- [```List Phone Numbers```](https://developers.avayacloud.com/onecloud-ccaas/reference/searchphonenumbers) - to get the available administered phone numbers
+- [```Authorization```](https://developers.avayacloud.com/avaya-experience-platform/docs/how-to-authenticate-with-axp-apis#client-credentials-grant) - to acquire the access token to be used across all the API calls.
+- [```List Phone Numbers```](https://developers.avayacloud.com/avaya-experience-platform/reference/searchphonenumbers) - to get the available administered phone numbers
 
 ## Configuration & Installation
 
 The widget is composed of two components, the widget itself (`bundles.js`) file and a backend component for authorization with AXP, as well as proxying the Admin API requests. Both components are NOT multi-tenanted and need to be deployed an instance per tenant.
 
 As a pre-requisite you need to acquire the AXP Client Credentials `(CLIENT_ID and CLIENT_SECRET)` to be able to use the widget. You will need a `client_credentials` grant type as well.
+Along with that you will need your AXP API Application Key `(AXP_API_APP_KEY)`
 
 You will also need to have `Node.js` installed on `v18.0+`
 
@@ -47,15 +48,18 @@ The bundle.js file is built out of this react-app
 To build the widget `bundle.js` file, you need to
 - Navigate to `src/app/config.js`
 - Update the configuration in there to match your tenant, for example:
-  - ```js
+
+
+```js
         export default {
             env: {
                 AXP_CLIENT_ID: "YOUR_AXP_CLIENT_ID",
                 AXP_PROXY_BASE_URL: "https://your_server_fqdn_running_axp-proxy-api:3001",
                 AXP_ACCOUNT_ID: "ABCDEF",
+                AXP_API_APP_KEY: "YOUR_AXP_API_APP_KEY"
             },
         };
-    ```
+```
 
 - After updating that file, you can now run `yarn install` to install the libraries and package dependencies.
 - Run `npm run prod` to build the bundle.js file, it will be in the build/ folder.

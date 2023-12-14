@@ -5,7 +5,7 @@ const widgetAPI = window.WS.widgetAPI();
 export function listPhoneNumbers({ pageSize, pageNumber }) {
   const config = {
     method: "get",
-    url: `${process.env.AXP_PROXY_BASE_URL}/api/admin/voice/v1beta/accounts/${process.env.AXP_ACCOUNT_ID}/phone-numbers`,
+    url: `${process.env.AXP_PROXY_BASE_URL}/api/admin/voice/v1/accounts/${process.env.AXP_ACCOUNT_ID}/phone-numbers`,
     params: { pageSize, pageNumber },
   };
   return axios(config).then((response) => {

@@ -41,12 +41,15 @@ function setInterceptors() {
     }
   );
 }
+
+/* eslint-disable no-unused-vars */
 function initAxios(dispatch) {
   const credentials = getObject("cliddw_credentials");
   if (credentials && credentials.access_token) {
     axios.defaults.headers["authorization"] = credentials.access_token;
   }
   axios.defaults.headers.common["Content-Type"] = "application/json";
+  axios.defaults.headers.common["appkey"] = process.env.AXP_API_APP_KEY;
 }
 
 async function initAuthentication({ dispatch }) {
@@ -94,7 +97,7 @@ async function getToken() {
 
   const config = {
     method: "post",
-    url: `${process.env.AXP_PROXY_BASE_URL}/auth/realms/${process.env.AXP_ACCOUNT_ID}/protocol/openid-connect/token`,
+    url: `${process.env.AXP_PROXY_BASE_URL}/api/auth/v1/${process.env.AXP_ACCOUNT_ID}/protocol/openid-connect/token`,
     headers: {
       "Content-Type": "application/x-www-form-urlencoded"
     },
@@ -128,7 +131,7 @@ async function refreshToken(refToken) {
 
   const config = {
     method: "post",
-    url: `${process.env.AXP_PROXY_BASE_URL}/auth/realms/${process.env.AXP_ACCOUNT_ID}/protocol/openid-connect/token`,
+    url: `${process.env.AXP_PROXY_BASE_URL}/api/auth/v1/${process.env.AXP_ACCOUNT_ID}/protocol/openid-connect/token`,
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
     },

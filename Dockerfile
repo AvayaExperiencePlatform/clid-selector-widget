@@ -1,11 +1,9 @@
-FROM node:12.18.3-alpine as build 
+FROM node:18-alpine as build 
 WORKDIR /app
 COPY package.json package.json
-COPY package-lock.json package-lock.json
-RUN npm install --force
+RUN yarn install
 COPY . .
 ENV NODE_ENV=production
-ARG PORT=8443
 RUN npm run build
 
 FROM nginx:1.19.2-alpine
