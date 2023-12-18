@@ -9,6 +9,15 @@ This custom widget gives Agents/Supervisors the functionality to:
     - Transferring to External Number
     - Consulting an External Number
 
+---
+
+## :warning: **Disclaimer**
+
+> :bulb: This sample application is provided **for demonstration purposes only** and is not intended for production use. *Your Company Name* assumes no responsibility for any issues arising from its use.
+
+---
+
+
 ## Technical Details
 
 The widget uses mainly the `AXP Admin - Voice APIs`, while also utilizing the `Workspaces Widget Framework SDK`.
