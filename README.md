@@ -13,7 +13,7 @@ This custom widget gives Agents/Supervisors the functionality to:
 
 ## :warning: **Disclaimer**
 
-> :bulb: This sample application is provided **for demonstration purposes only** and is not intended for production use. *Your Company Name* assumes no responsibility for any issues arising from its use.
+> :bulb: this sample application is provided **for demonstration purposes only** and are not intended for production use. We assume no responsibility for any issues arising from its use.
 
 ---
 
