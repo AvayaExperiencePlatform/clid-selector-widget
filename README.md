@@ -1,64 +1,46 @@
+
 # CLID Selector Widget
 
 ## Description
 
-This custom widget gives Agents/Supervisors the functionality to:
-
-- Utilize the Workspaces Widget Framework methods to set the Caller ID before
-    - Starting Outbound Voice Interaction
-    - Transferring to External Number
-    - Consulting an External Number
+This custom widget provides Agents/Supervisors with the ability to:
+- Set the Caller ID before starting an outbound voice interaction, transferring to, or consulting an external number, utilizing the Workspaces Widget Framework methods.
 
 ---
 
 ## :warning: **Disclaimer**
 
-> :bulb: this sample application is provided **for demonstration purposes only** and are not intended for production use. We assume no responsibility for any issues arising from its use.
+> :bulb: This sample application is provided **for demonstration purposes only** and is not intended for production use. We assume no responsibility for any issues arising from its use.
 
 ---
 
-
 ## Technical Details
 
-The widget uses mainly the `AXP Admin - Voice APIs`, while also utilizing the `Workspaces Widget Framework SDK`.
-
-Below are the APIs utilized.
+The widget primarily uses `AXP Admin - Voice APIs`, alongside the `Workspaces Widget Framework SDK`.
 
 ### Workspaces Widget Framework SDK
-
-- ```onDataEvent("onAgentStateEvent", callback)``` - to subscribe to change in Agent's state (logged in, ready, not ready, etc..).
-- ```getConfiguration().user``` - to get the full logged in Agent configuration.
-- ```getCapabilities()``` - to get the Agent's capabilities to know whether the agent can use VOICE channels.
-
+- `onDataEvent("onAgentStateEvent", callback)`: Subscribe to changes in the Agent's state (logged in, ready, not ready, etc.).
+- `getConfiguration().user`: Retrieve the full logged-in Agent configuration.
+- `getCapabilities()`: Determine if the Agent can use VOICE channels.
 
 ### Admin APIs
-
-- [```Authorization```](https://developers.avayacloud.com/avaya-experience-platform/docs/how-to-authenticate-with-axp-apis#client-credentials-grant) - to acquire the access token to be used across all the API calls.
-- [```List Phone Numbers```](https://developers.avayacloud.com/avaya-experience-platform/reference/searchphonenumbers) - to get the available administered phone numbers
+- [Authorization](https://developers.avayacloud.com/avaya-experience-platform/docs/how-to-authenticate-with-axp-apis#client-credentials-grant): Acquire an access token for all API calls.
+- [List Phone Numbers](https://developers.avayacloud.com/avaya-experience-platform/reference/searchphonenumbers): Retrieve available administered phone numbers.
 
 ## Configuration & Installation
 
-The widget is composed of two components, the widget itself (`bundles.js`) file and a backend component for authorization with AXP, as well as proxying the Admin API requests. Both components are NOT multi-tenanted and need to be deployed an instance per tenant.
+The widget comprises two components: the widget itself (`bundles.js`) and a backend component for authorization and proxying Admin API requests. Both components are not multi-tenanted and require individual deployment per tenant.
 
-As a pre-requisite you need to acquire the AXP Client Credentials `(CLIENT_ID and CLIENT_SECRET)` to be able to use the widget. You will need a `client_credentials` grant type as well.
-Along with that you will need your AXP API Application Key `(AXP_API_APP_KEY)`
+Pre-requisites include acquiring AXP Client Credentials `(CLIENT_ID and CLIENT_SECRET)` and an AXP API Application Key `(AXP_API_APP_KEY)`. 
+Node.js `v18.0+` is also required.
 
-You will also need to have `Node.js` installed on `v18.0+`
+### Running the Backend Component
+Refer to the AXP Proxy API build & deploy guide available [here](https://github.com/AvayaExperiencePlatform/axp-api-proxy).
 
-### Running the backend component
-
-Refer to the AXP Proxy API build & deploy guide available [```here```](https://github.com/AvayaExperiencePlatform/axp-api-proxy)
-
-
-### Building the widget bundle.js file for your tenant
-
+### Building the Widget Bundle.js File for Your Tenant
 The bundle.js file is built out of this react-app 
 
-To build the widget `bundle.js` file, you need to
-- Navigate to `src/app/config.js`
-- Update the configuration in there to match your tenant, for example:
-
-
+- Navigate to `src/app/config.js` and update the configuration to match your tenant, for example: 
 ```js
         export default {
             env: {
@@ -69,46 +51,35 @@ To build the widget `bundle.js` file, you need to
             },
         };
 ```
-
-- After updating that file, you can now run `yarn install` to install the libraries and package dependencies.
-- Run `npm run prod` to build the bundle.js file, it will be in the build/ folder.
+ - After updating, run `yarn install` to install dependencies 
+ - Run `npm run prod` to build the `bundle.js` file, to be located in the `build/` folder.
 
 ## Dockerized Hosting
 
-### Build & Develop
-After you make the changes as required by the widget you want to build, you can build and deploy your widget following the below steps
-
 ### Prerequisites
-- `Node.js` version 18+ is required.
-- `Docker` & `Docker Compose`.
-- SSL Certificate & Key to serve the built files.
-- Upload the `clid-selector-widget.json` file into the `Avaya Experience Platform` Admin Portal -> Widget Management.
+- Node.js version 18+.
+- Docker & Docker Compose.
+- SSL Certificate & Key.
+- Upload the `clid-selector-widget.json` file to the Avaya Experience Platform Admin Portal -> Widget Management.
 
----
-### Follow the following steps
-1. Update the `docker-compose-dev.yml` file with the location of the SSL certificates.
-2. ```sh
-    yarn install
-    npm run build
-    docker-compose -f docker-compose-dev.yml up # add -d to run in a background process
-    ```
-3. After a change, just run ```npm run build``` and refresh your workspaces, all done!
----
+### Steps
+1. Update `docker-compose-dev.yml` with SSL certificate paths.
+2. Run the following commands:
+   ```sh
+   yarn install
+   npm run build
+   docker-compose -f docker-compose-dev.yml up # add -d to run in a background process
+   ```
+3. After any change, run `npm run build` and refresh your workspaces.
 
-If you've done everything correctly, It should look something like this (default without any changes).
+If you've done everything correctly, It should look something like this (default view without any changes).
 
 ![Widget Screenshot](./public/screenshot.png)
 
-
 ## Manual Hosting
 
-### Hosting the Widget
-
-The widget can be served using any webserver and it should server the file
-- bundle.js
-
-Below is an Example for `NGINX` configuration of hosting the bundle.js file
-
+### Hosting the Widget with NGINX
+The widget can be served using any web server. Below is an NGINX configuration example:
 
 ```nginx
 server {
