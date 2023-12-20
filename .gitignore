@@ -8,6 +8,8 @@ node_modules/
 dist/
 build/
 secrets/
+package-lock.json
+yarn.lock
 
 # Compiled Java class files
 *.class
